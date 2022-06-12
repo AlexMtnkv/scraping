@@ -77,6 +77,7 @@ class parser_machine:
 
     def collect_data(self, link):
         # Получение страницы товара
+        self.headers['UserAgent'] = UserAgent().random
         response = requests.get(url=link, headers=self.headers, cookies=self.cookies, proxies=self.proxies)
         soup = BeautifulSoup(response.text, 'lxml')
         self.get_item_info(soup, response)
